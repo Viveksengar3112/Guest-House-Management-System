@@ -1,0 +1,10 @@
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\bin\Debug\GuestHouseDB.dacpac
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\bin\Debug\GuestHouseDB.dll
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\bin\Debug\GuestHouseDB.pdb
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\GuestHouseDB.sqlprojAssemblyReference.cache
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\Model.xml
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\refactor.xml
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\postdeploy.sql
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\predeploy.sql
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\GuestHouseDB.dll
+D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\GuestHouseDB.pdb
