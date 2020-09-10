@@ -9,6 +9,16 @@ public partial class register : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+    }
 
+    /*protected void RegControl_Click(object sender, EventArgs e)
+    {
+        Response.Write(inputFirstName.Value);
+    }
+    */
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("login.aspx");
     }
 }

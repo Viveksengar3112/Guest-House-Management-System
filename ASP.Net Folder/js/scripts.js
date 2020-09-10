@@ -19,38 +19,32 @@
         e.preventDefault();
         $("body").toggleClass("sb-sidenav-toggled");
     });
-})(jQuery);
+    })(jQuery);
 
 
-$('#registrationForm').submit(function(e){
-    e.preventDefault();
+var password = document.getElementById("inputPassword");
+var confirm_password = document.getElementById("inputConfirmPassword");
 
-    //validate mobile number
-    num = document.getElementById("inputMobileNumber");
-    var a = /^\d{10}$/;  
-    if (!a.test(num.value))   
-    {  
-        alert("Please enter a valid mobile number.");
-        num.focus();
-        return;
-    }   
-
-    //checking confirm pass
-    password1 = document.getElementById("inputPassword"); 
-    password2 = document.getElementById("inputConfirmPassword");
-            
-    // If Not same return False.     
-    if (password1.value != password2.value) { 
-        alert ("\nPassword did not match: Please try again");
-        password2.focus(); 
-    } 
-
-    // If same return True. 
-    else{ 
-        location.href = "login.aspx";
-        alert ("Account Created Successfully!");
+function validatePassword() {
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
     }
-});
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+function trialFxn() {
+    if (document.getElementById("testName").value == "Submit") {
+        confirm("are you sure?");
+    }
+    else {
+        alert("NOICE");
+    }
+}
+
 
 $('#loginForm').submit(function(e){
     e.preventDefault();

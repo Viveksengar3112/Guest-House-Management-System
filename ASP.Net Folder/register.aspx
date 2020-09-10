@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head runats="server">
+    <head runat="server">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -14,7 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-        <form id="form1" runat="server">
+        <form id="reg_form" runat="server">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -24,12 +24,11 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
-                                        <form id="registrationForm" action="#" method="POST" >
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="inputFirstName">First Name</label>
-                                                        <input class="form-control py-4" id="inputFirstName" type="text" autocapitalize="word" placeholder="Enter first name" required/>
+                                                        <label class="small mb-1 required" id="firstName" for="inputFirstName">First Name</label>
+                                                        <input class="form-control py-4" runat="server" id="inputFirstName" type="text" autocapitalize="word" placeholder="Enter first name" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -43,7 +42,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputMobileNumber">Mobile No.</label>
-                                                        <input class="form-control py-4" id="inputMobileNumber" type="tel" placeholder="Enter mobile number" required/>
+                                                        <input class="form-control py-4" id="inputMobileNumber" value="+91-" title="Invalid phone number" type="tel" placeholder="Enter mobile number" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -71,8 +70,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group mt-4 mb-0"><button type="submit" class="btn btn-primary btn-block" id="registrationButton">Create Account</button></div>
-                                        </form>
+                                            <div class="form-group mt-4 mb-0">
+                                                <!--<button type="button" class="btn btn-primary btn-block" id="registrationButton" onclick="registrationButton_clicked()" >Create Account</button>-->
+                                                <asp:Button class="btn btn-primary btn-block" ID="Button1" runat="server" OnClick="Button1_Click" Text="Create Account"/>
+                                            </div>
                                     </div>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="login.aspx">Have an account? Go to login</a></div>
@@ -97,10 +98,10 @@
                     </div>
                 </footer>
             </div>
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+            <script src="js/scripts.js"></script>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
     </form>
     </body>
 </html>
