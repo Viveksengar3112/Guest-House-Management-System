@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="GuestHouse.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="password.aspx.cs" Inherits="password" %>
 
 <!DOCTYPE html>
 
@@ -14,7 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-        <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -22,27 +22,17 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
                                     <div class="card-body">
-                                        <form id="loginForm" action="#" method="POST">
+                                        <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
+                                        <form id="resetForm" action="#" method="POST">
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" required/>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
-                                                    <label class="custom-control-label" for="rememberPasswordCheck">Remember password</label>
-                                                </div>
+                                                <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required/>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.aspx">Forgot Password?</a>
-                                                <!-- <input type="submit" onclick=""> -->
-                                                <button type="submit" runat="server" class="btn btn-primary" id="loginButton">Login</button>
+                                                <a class="small" href="login.aspx">Return to login</a>
+                                                <button type="submit" class="btn btn-primary" id="resetPass">Reset Password</button>
                                             </div>
                                         </form>
                                     </div>

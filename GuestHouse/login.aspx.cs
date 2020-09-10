@@ -5,13 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GuestHouse
+public partial class login : System.Web.UI.Page
 {
-    public partial class login : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    private const string Value = "function was called";
 
-        }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void loginButton_Click(object sender, EventArgs e)
+    {
+        Console.Write(Value);
+        Response.Write("Button Clicked");
     }
 }
