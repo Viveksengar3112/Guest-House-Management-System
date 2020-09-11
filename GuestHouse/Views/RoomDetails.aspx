@@ -23,8 +23,7 @@
     <link href="../css/dashboard.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	
-	
+
 	
 
  </head>
@@ -100,28 +99,38 @@
             <h2 class="sub-header">Enter Room Details</h2>
 					<form role="form" id="formRoom" action="#" method="post">
 					  <div class="form-group">
-						<label for="room_name">Room Type</label>
-						<input type="text" class="form-control" name="room_name" id="room_name" placeholder="Room Type" required>
+						<label for="room_name">Room Number</label>
+						<input type="text" class="form-control" name="inputRoomNumber" id="inputRoomNumber" placeholder="Room Number" required>
 					  </div>
 					  <div class="form-group">
-						<label for="total_room">Total Rooms</label>
-						<input type="text" class="form-control" name="total_room"   id="total_room" placeholder="Number of Rooms" required>
+						<label for="total_room">Room Type </label>
+						<input type="number" class="form-control" name="inputRoomType"   id="inputRoomType" placeholder="enter" required>
 					  </div>
 					   <div class="form-group">
 						<label for="occupancy">Occupancy</label>
-						<input type="number" class="form-control" name="occupancy" id="occupancy" placeholder="max number of occupant" required>
+						<input type="number" class="form-control" name="occupancy" id="inputRoomCapacity" placeholder="Max number of occupants" required>
 					  </div>
 					  <div class="form-group">
 						<label for="rate">Rate</label>
-						<input type="number" class="form-control"  name="rate" id="rate" placeholder="Write per day rate in INR" required>
+						<input type="number" class="form-control"  name="rate" id="inputRoomPrice" placeholder="Write per day rate in INR" required>
+					  </div>
+					  <div class="form-group">
+						<label for="BookingStatus">Booking Status </label>
+						<input type="number" class="form-control" name="inputBookingStatus"   id="inputBookingStatus" placeholder="enter" required>
+					  </div>
+					  <div class="form-group">
+						<label for="GuestHouseID">Guest House </label>
+						<input type="number" class="form-control" name="inputGuestHouse"   id="inputGuestHouse" placeholder="enter" required>
 					  </div>
 					  <div class="form-group">
 						<label for="desc">Descriptions</label>
-						<input type="text" class="form-control" name="desc" id="desc" placeholder="">
+						<input type="text" class="form-control" name="desc" id="inputRoomDescription" placeholder="">
 					  </div>
 					  <div class="form-group">
 						<label for="img">Upload Room Image [recommended size is 400 X 400]</label>
-						<input type="file" id="img" name="img">
+						<input type="file" id="InputImage" class="form-control" name="roomImage" title="Load Image" onchange="DisplayImage(this)" />
+                        <img id="imgRoom" height="100" width="100" style="border:solid" />
+
 						<!-- p class="help-block">Example block-level help text here.</p-->
                       </div>
                       <button type="button" class="btn" id="back">Back</button>
@@ -132,7 +141,7 @@
       </div>
     </div>
 
-  <script>
+  <script type="text/javascript">
       $(document).ready(function () {
           $("#addroom").click(function () {
               $("#divForm").toggle();
@@ -143,31 +152,51 @@
               $("#roomDetail").toggle();
 		  });
 
-          $('#registrationForm').submit(function (e) {
+		  $("#submitBtn").click(function () {
+			  saveRoomData();
+		  });
 
-              e.preventDefault();
-              var room = {};
-              guest.FirstName = $('#inputFirstName').val();
-              guest.LastName = $('#inputLastName').val();
-              guest.EmailAddress = $('#inputEmailAddress').val();
-              guest.MobileNo = $('#inputMobileNumber').val();
-              guest.ID = $('#inputPersonID').val();
-              $.ajax({
-                  url: 'Register.aspx/SaveGuestDetails',
-                  type: "POST",
+	  });
 
-                  contentType: 'application/json;charset=utf-8',
-                  data: JSON.stringify({ guestData: JSON.parse(JSON.stringify(guest)) }),
-                  success: function (result) {
-                      alert('success');
-                  },
-                  error: function (result) {
-                      alert(result.responseText);
-                  }
+	  function saveRoomData() {
+		  var formData = new FormData;
+		  formData.append("RoomNumber", $("#inputRoomNumber").val());
+		  formData.append("RoomPrice", $("#inputRoomPrice").val());
+		  formData.append("BookingStatusID", $("#inputBookingStatus").val());
+		  formData.append("RoomTypeID", $("#inputRoomType").val());
+		  formData.append("RoomCapacity", $("#inputRoomCapacity").val());
+		  formData.append("RoomDescription", $("#inputRoomDescription").val());
+		  formData.append("GuestHouseID", $("#inputGuestHouse").val());
+		  formData.append("Image", $("#InputImage").get(0).files[0]);
+		  
+		
+		 /* var room = {};
+		  room.RoomNumber = $("#inputRoomNumber").val();
+		  room.RoomPrice = $("#inputRoomPrice").val();
+		  room.BookingStatusID = $("#inputBookingStatus").val();
+		  room.RoomTypeID = $("#inputRoomType").val();
+		  room.RoomCapacity = $("#inputRoomCapacity").val();
+		  room.RoomDescription = $("#inputRoomDescription").val();
+		  room.GuestHouseID = $("#inputGuestHouse").val();
+		  room.Image = $("#inputImage").get(0).files[0];
+		  */
+		  $.ajax({
+			  type: "POST",
+			  contentType: false,
+			  processData: false,
+              data: formData,
+              url: 'RoomDetails.aspx/SaveRoomDetails',
+			  success: function (data) {
+                  alert('success');
+			  },
+			  error: function () {
+				  alert('error');
+			  }
+		  })
 
-              });
-          });
-      });
+      }
+
+
       function moredetail(id) {
           var x = "booking" + id;
           document.getElementById(x).style.display = "block";
@@ -177,10 +206,21 @@
           return confirm("Are you sure you want to delete?");
       });
 
+      function DisplayImage(result) {
+          if (result.files && result.files[0]) {
+             // console.log("hello");
+              var fileReader = new FileReader;
+              fileReader.onload = function (e) {
+                  $("#imgRoom").attr('src', e.target.result);
+              }
+              fileReader.readAsDataURL(result.files[0]);
+          }
+      }
+
+
   </script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/scripts.js"></script>
 </body>
 
 </html>

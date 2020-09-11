@@ -77,6 +77,7 @@
     <Content Include="Views\login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Views\RoomDetails.aspx.cs">
       <DependentUpon>RoomDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

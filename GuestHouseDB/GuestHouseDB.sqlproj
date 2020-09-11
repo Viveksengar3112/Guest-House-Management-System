@@ -77,5 +77,6 @@
     <Build Include="dbo\Stored Procedures\spGetGuestById.sql" />
     <Build Include="dbo\Stored Procedures\spInsertGuest.sql" />
     <Build Include="Security\Master.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertRoom.sql" />
   </ItemGroup>
 </Project>
