@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 using System.Web.Script.Serialization;
 using System.ComponentModel.DataAnnotations;
 
-namespace GuestHouse
+namespace GuestHouse.Views
 {
     public partial class Register : System.Web.UI.Page
     {

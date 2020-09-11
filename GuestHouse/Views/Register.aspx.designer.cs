@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuestHouse
+namespace GuestHouse.Views
 {
 
 
