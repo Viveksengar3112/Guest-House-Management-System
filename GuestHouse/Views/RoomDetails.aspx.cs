@@ -34,9 +34,9 @@ namespace GuestHouse.Views
                 {
                     SqlCommand sc = new SqlCommand("dbo.spInsertRoom", con);
                     sc.CommandType = CommandType.StoredProcedure;
-                    string ImageUniqueName = Guid.NewGuid().ToString();
+                   string ImageUniqueName = Guid.NewGuid().ToString();
                     string ActualImageName = ImageUniqueName + Path.GetExtension(r.InputImage.FileName);
-                    r.InputImage.SaveAs(Server.MapPath("~/RoomImages/" + ActualImageName));
+                   r.InputImage.SaveAs(Server.MapPath("~/RoomImages/" + ActualImageName));
                     
                     sc.Parameters.AddWithValue("@RoomNumber", r.RoomNumber.Trim());
                     sc.Parameters.AddWithValue("@RoomPrice", r.RoomPrice.Trim());

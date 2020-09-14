@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -69,6 +70,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dashboard.css" />
     <Content Include="css\styles.css" />
+    <Content Include="Views\Dashboard.aspx" />
     <Content Include="Views\RoomDetails.aspx" />
     <Content Include="js\scripts.js" />
     <Content Include="Views\Register.aspx" />
@@ -78,6 +80,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\RoomModel.cs" />
+    <Compile Include="Views\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\RoomDetails.aspx.cs">
       <DependentUpon>RoomDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
