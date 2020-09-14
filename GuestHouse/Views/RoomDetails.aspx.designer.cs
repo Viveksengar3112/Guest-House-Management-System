@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuestHouse
+namespace GuestHouse.Views
 {
 
 
-    public partial class Register
+    public partial class RoomDetails
     {
     }
 }

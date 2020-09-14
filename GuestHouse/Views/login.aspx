@@ -14,7 +14,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
-        <form id="form1" runat="server">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -26,11 +25,11 @@
                                     <div class="card-body">
                                         <form id="loginForm" action="#" method="POST">
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                                <label class="small mb-1 required" for="inputEmailAddress">Email</label>
                                                 <input class="form-control py-4" id="inputEmailAddress" type="email" placeholder="Enter email address" required/>
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
+                                                <label class="small mb-1 required" for="inputPassword">Password</label>
                                                 <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" required/>
                                             </div>
                                             <div class="form-group">
@@ -40,14 +39,14 @@
                                                 </div>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.aspx">Forgot Password?</a>
+                                                <a class="small" href="Password.aspx">Forgot Password?</a>
                                                 <!-- <input type="submit" onclick=""> -->
                                                 <button type="submit" runat="server" class="btn btn-primary" id="loginButton">Login</button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="register.aspx">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="Register.aspx">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +72,5 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-    </form>
     </body>
 </html>

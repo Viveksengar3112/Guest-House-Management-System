@@ -1,8 +1,8 @@
 ﻿/*!
-    * Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
+   * Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
+   * Copyright 2013-2020 Start Bootstrap
+   * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+   */
 (function ($) {
     "use strict";
 
@@ -22,45 +22,40 @@
 })(jQuery);
 
 
-$('#registrationForm').submit(function (e) {
-    e.preventDefault();
-
-    //validate mobile number
-    num = document.getElementById("inputMobileNumber");
-    var a = /^\d{10}$/;
-    if (!a.test(num.value)) {
-        alert("Please enter a valid mobile number.");
-        num.focus();
-        return;
-    }
-
-    //checking confirm pass
-    password1 = document.getElementById("inputPassword");
-    password2 = document.getElementById("inputConfirmPassword");
-
-    // If Not same return False.     
-    if (password1.value != password2.value) {
-        alert("\nPassword did not match: Please try again");
-        password2.focus();
-    }
-
-    // If same return True. 
-    else {
-        location.href = "login.aspx";
-        alert("Account Created Successfully!");
-    }
+//function for add new room
+$(document).ready(function () {
+    $("#addroom").click(function () {
+        $("#formnew").toggle();
+        $("#roomDetail").toggle();
+    });
+    $("#back").click(function () {
+        $("#formnew").toggle();
+        $("#roomDetail").toggle();
+    });
 });
-
-$('#loginForm').submit(function (e) {
-    e.preventDefault();
-    //need to check the id, pass against database
-    location.href = "index.aspx";
+// need to add these functionalities
+/*
+function moredetail(id) {
+    var x = "booking" + id;
+    document.getElementById(x).style.display = "block";
+}
+$('.delete').click(function () {
+    return confirm("Are you sure you want to delete?");
 });
+*/
 
-$('#resetForm').submit(function (e) {
-    e.preventDefault();
 
-    //need to check the id, pass against database
-    alert("Password reset link sent to your registered Email address");
-    location.href = "login.aspx";
-});
+
+var password = document.getElementById("inputPassword");
+var confirm_password = document.getElementById("inputConfirmPassword");
+
+function validatePassword() {
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
