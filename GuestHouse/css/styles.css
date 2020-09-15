@@ -1683,12 +1683,13 @@ pre code {
   margin-bottom: 1rem;
   color: #212529;
 }
-.table th,
-.table td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid #dee2e6;
-}
+    .table th,
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        
+    }
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
@@ -10259,4 +10260,9 @@ body {
 }
 .sb-sidenav-light .sb-sidenav-footer {
   background-color: #e9ecef;
+}
+
+td,th {
+    text-align: center;
+    vertical-align: middle;
 }

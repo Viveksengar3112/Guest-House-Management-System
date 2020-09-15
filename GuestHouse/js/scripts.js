@@ -23,39 +23,45 @@
 
 
 //function for add new room
-$(document).ready(function () {
-    $("#addroom").click(function () {
-        $("#formnew").toggle();
-        $("#roomDetail").toggle();
-    });
-    $("#back").click(function () {
-        $("#formnew").toggle();
-        $("#roomDetail").toggle();
-    });
-});
-// need to add these functionalities
-/*
-function moredetail(id) {
-    var x = "booking" + id;
-    document.getElementById(x).style.display = "block";
-}
-$('.delete').click(function () {
-    return confirm("Are you sure you want to delete?");
-});
-*/
+   
 
-
-
-var password = document.getElementById("inputPassword");
-var confirm_password = document.getElementById("inputConfirmPassword");
-
-function validatePassword() {
-    if (password.value != confirm_password.value) {
-        confirm_password.setCustomValidity("Passwords Don't Match");
-    } else {
-        confirm_password.setCustomValidity('');
+function saveRoomData() {
+    /*    var formData = new FormData;
+        formData.append("RoomNumber", $("#inputRoomNumber").val());
+        formData.append("RoomPrice", $("#inputRoomPrice").val());
+        formData.append("BookingStatusID", $("#inputBookingStatus").val());
+        formData.append("RoomTypeID", $("#inputRoomType").val());
+        formData.append("RoomCapacity", $("#inputRoomCapacity").val());
+        formData.append("RoomDescription", $("#inputRoomDescription").val());
+        formData.append("GuestHouseID", $("#inputGuestHouse").val());
+        formData.append("InputImage", $("#InputImage").get(0).files[0]);
+        */
     }
-}
+    
+    // need to add these functionalities
+    /*
+    function moredetail(id) {
+        var x = "booking" + id;
+        document.getElementById(x).style.display = "block";
+    }
+    $('.delete').click(function () {
+        return confirm("Are you sure you want to delete?");
+    });
+  
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
+
+
+    var password = document.getElementById("inputPassword");
+    var confirm_password = document.getElementById("inputConfirmPassword");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+      */
