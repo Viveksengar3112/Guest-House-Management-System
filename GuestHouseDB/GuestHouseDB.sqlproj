@@ -83,5 +83,7 @@
     <Build Include="dbo\Stored Procedures\spGetGuestHouse.sql" />
     <Build Include="dbo\Stored Procedures\spGetRoomDetails.sql" />
     <Build Include="Security\Master.sql" />
+    <Build Include="dbo\Tables\Registration.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertRegistration.sql" />
   </ItemGroup>
 </Project>
