@@ -74,13 +74,15 @@
     <Build Include="Master\Tables\PaymentTypes.sql" />
     <Build Include="dbo\Tables\Rooms.sql" />
     <Build Include="Master\Tables\RoomType.sql" />
-    <Build Include="dbo\Stored Procedures\spGetGuestById.sql" />
-    <Build Include="dbo\Stored Procedures\spInsertGuest.sql" />
-    <Build Include="dbo\Stored Procedures\spInsertRoom.sql" />
+    <Build Include="dbo\Tables\Registration.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="GuestHouseDB.refactorlog" />
     <Build Include="dbo\Stored Procedures\spGetBookingStatus.sql" />
     <Build Include="dbo\Stored Procedures\spGetRoomType.sql" />
     <Build Include="dbo\Stored Procedures\spGetGuestHouse.sql" />
     <Build Include="dbo\Stored Procedures\spGetRoomDetails.sql" />
+    <Build Include="dbo\Stored Procedures\spInsertRegistration.sql" />
     <Build Include="Security\Master.sql" />
   </ItemGroup>
 </Project>
