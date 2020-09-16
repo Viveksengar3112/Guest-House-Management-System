@@ -5,3 +5,14 @@
 /Extras
 /GuestHouseDB/GuestHouseDB.dbmdl
 /GuestHouseDB/GuestHouseDB.jfm
+/GuestHouseDB/obj/
+/GuestHouseDB/bin/
+/GuestHouse/obj/
+/GuestHouse/bin/
+*/.vs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.mdf
+*.ldf
