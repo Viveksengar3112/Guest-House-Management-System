@@ -10,7 +10,7 @@
 /GuestHouse/obj/
 /GuestHouse/bin/
 */.vs/
-.vs/
+/.vs/
 *.suo
 *.user
 *.userosscache
