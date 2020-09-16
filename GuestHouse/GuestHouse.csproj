@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\RoomViewModel.cs" />
     <Compile Include="Views\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>

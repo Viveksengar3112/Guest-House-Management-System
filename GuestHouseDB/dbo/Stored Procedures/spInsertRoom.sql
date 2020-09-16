@@ -2,7 +2,6 @@
 (
 	@RoomNumber nvarchar(8),
 	@RoomPrice nvarchar(10),
-	@RoomImage nvarchar(550),
 	@BookingStatusID int ,
 	@RoomTypeID int,
 	@RoomCapacity int,
@@ -18,7 +17,6 @@ BEGIN
 	(
 	RoomNumber ,
 	RoomPrice ,
-	RoomImage ,
 	BookingStatusID ,
 	RoomTypeID ,
 	RoomCapacity, 
@@ -29,7 +27,6 @@ BEGIN
 	(
 	@RoomNumber ,
 	@RoomPrice ,
-	@RoomImage ,
 	@BookingStatusID,
 	@RoomTypeID ,
 	@RoomCapacity ,
