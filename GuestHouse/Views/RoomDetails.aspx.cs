@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using GuestHouse.Models;
 using System.Configuration;
@@ -75,12 +76,12 @@ namespace GuestHouse.Views
             {
                 try
                 {
-                    SqlCommand sc = new SqlCommand("dbo.spInsertRoom", con);
+                    SqlCommand sc = new SqlCommand("dbo.spRoomDetailsCRUD", con);
                     sc.CommandType = CommandType.StoredProcedure;
                     // string ImageUniqueName = Guid.NewGuid().ToString();
                     // string ActualImageName = ImageUniqueName + Path.GetExtension(r.InputImage.FileName);
                     //  r.InputImage.SaveAs(HttpContext.Current.Server.MapPath("~/RoomImages/" + ActualImageName));
-
+                    sc.Parameters.AddWithValue("@Action", "INSERT");
                     sc.Parameters.AddWithValue("@RoomNumber", r.RoomNumber.Trim());
                     sc.Parameters.AddWithValue("@RoomPrice", r.RoomPrice.Trim());
                     sc.Parameters.AddWithValue("@BookingStatusID", r.BookingStatusID);
@@ -111,8 +112,9 @@ namespace GuestHouse.Views
             string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             using (SqlConnection con = new SqlConnection(cs))
             {
-                SqlCommand cmd = new SqlCommand("spGetRoomDetails", con);
+                SqlCommand cmd = new SqlCommand("spRoomDetailsCRUD", con);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Action", "SELECT");
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
@@ -146,6 +148,28 @@ namespace GuestHouse.Views
                 }
 
             }
+        }
+        protected void OnDelete(object sender, EventArgs e)
+        {
+            //Find the reference of the Repeater Item.
+            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            int RoomID = int.Parse((item.FindControl("lblRoomID") as Label).Text);
+
+            string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("spRoomDetailsCRUD"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Action", "DELETE");
+                    cmd.Parameters.AddWithValue("@RoomID", RoomID);
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            this.BindRepeater();
         }
 
 

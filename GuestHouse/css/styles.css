@@ -10262,7 +10262,19 @@ body {
   background-color: #e9ecef;
 }
 
+/*CUSTOM CSS - NOT BOOTSTRAP -  DO NOT DELETE*/
 td,th {
     text-align: center;
     vertical-align: middle;
+}
+
+.button_glyph {
+    transition-duration: 0.4s;
+    border-radius: 6px;
+    border: 1px solid #007bff;
+}
+
+.button_glyph:hover {
+    background-color: #007bff; /* Green */
+    color: white;
 }

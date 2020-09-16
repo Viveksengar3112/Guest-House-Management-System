@@ -6,7 +6,7 @@
     <Name>GuestHouseDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{e6772298-5dbd-4c61-9a86-cb49f3473c56}</ProjectGuid>
+    <ProjectGuid>{da4b8bf1-3d68-4948-921b-1d0484d40a32}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -74,6 +74,7 @@
     <Build Include="Master\Tables\PaymentTypes.sql" />
     <Build Include="dbo\Tables\Rooms.sql" />
     <Build Include="Master\Tables\RoomType.sql" />
+    <Build Include="dbo\Stored Procedures\spRoomDetailsCRUD.sql" />
     <Build Include="dbo\Stored Procedures\spGetGuestById.sql" />
     <Build Include="dbo\Stored Procedures\spInsertGuest.sql" />
     <Build Include="dbo\Stored Procedures\spInsertRoom.sql" />

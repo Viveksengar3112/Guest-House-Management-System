@@ -11,11 +11,17 @@
 			<h2 class="mt-4">Room Details</h2>
 			<br />
           <div class="table-responsive">
+           
+              
            <asp:Repeater ID="RoomTable" runat="server">
             <HeaderTemplate>
-            <table style= "border: 1px hidden; width: 1200px" cellpadding="0">
-            <tr style="background-color: #0094ff; color: #000000; font-size: large; font-weight: bold">
+            <table class="table table-striped" style= "border: 1px hidden; width: 1200px; border-collapse: separate;
+        border-spacing: 0 15px;" cellpadding="0" >
+            <tr style="background-color: #007bff; color: white; font-size: large; font-weight: bold;  text-align: center; vertical-align: middle;">
 
+                 <th scope="col" style="width: 200px">
+                    Action
+                </th>
                 <th scope="col" style="width: 200px">
                     Guest House Name
                 </th>
@@ -41,26 +47,48 @@
            </HeaderTemplate>
             <ItemTemplate>
              <tr>
+                  <td>
+                     <button ID="btnEdit" runat="server" class="button_glyph"  >
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                     </button>&nbsp;&nbsp;
+                      <button ID="btnUpdate" runat="server" class="button_glyph" visible="false"  >
+                        <span aria-hidden="true" class="glyphicon glyphicon-ok"></span>
+                     </button>&nbsp;&nbsp;
+                      <button ID="btnCancel" runat="server" class="button_glyph" visible="false"  >
+                        <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                     </button>&nbsp;&nbsp;
+                     <button ID="btnDelete" runat="server" class="button_glyph" onserverclick="OnDelete" OnClientClick="return confirm('Do you want to delete this row?');" >
+                        <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
+                     </button>
+                  </td>
                  <td>
+                <asp:Label ID="lblRoomID" runat="server" Text='<%# Eval("RoomID") %>' Visible = "false" />
                 <asp:Label ID="lblGH" runat="server" Text='<%# Eval("Name") %>' />
+                <asp:Textbox ID="txtGH" runat="server" Text='<%# Eval("Name") %>' Visible = "false" />
                 </td>
             <td>
                 <asp:Label ID="lblRN" runat="server" Text='<%# Eval("RoomNumber") %>' />
+                 <asp:Textbox ID="txtRN" runat="server" Text='<%# Eval("RoomNumber") %>' Visible = "false" />
             </td>
             <td>
                 <asp:Label ID="lblRP" runat="server" Text='<%# Eval("RoomPrice") %>' />
+                <asp:Textbox ID="txtRP" runat="server" Text='<%# Eval("RoomPrice") %>' Visible = "false" />
             </td>
-                  <td>
+                <td>
                 <asp:Label ID="lblRC" runat="server" Text='<%# Eval("RoomCapacity") %>' />
+                <asp:Textbox ID="txtRC" runat="server" Text='<%# Eval("RoomCapacity") %>' Visible = "false" />
                 </td>
                   <td>
                 <asp:Label ID="lblBS" runat="server" Text='<%# Eval("BookingStatus") %>' />
+                <asp:Textbox ID="txtBS" runat="server" Text='<%# Eval("BookingStatus") %>' Visible = "false" />
                 </td>
                   <td>
                 <asp:Label ID="lblRT" runat="server" Text='<%# Eval("RoomType") %>' />
+                      <asp:Textbox ID="txtRT" runat="server" Text='<%# Eval("RoomType") %>' Visible = "false" />
                 </td>
                   <td>
                 <asp:Label ID="lblRD" runat="server" Text='<%# Eval("RoomDescription") %>' />
+                <asp:Textbox ID="txtRD" runat="server" Text='<%# Eval("RoomDescription") %>' Visible = "false" />
                 </td>
         </tr>
     </ItemTemplate>
@@ -68,33 +96,39 @@
         </table>
     </FooterTemplate>
 </asp:Repeater>
+                
               <br \>
+                
           </div>
 		 
 		  <button type="button" class="btn btn-primary" id="addroom">Add Room</button>
+            
+        </div> 
         </div>
 
         <!-- The new room form starts here -->
-        <div class="mt-4" id="formnew" style="display:none;">
+        <div class="mt-4" id="formnew" style="display:none; padding-left :20px">
             <h2 class="mt-4"> Enter Room Details</h2>
 			<br />
-			<form role="form" id="newRoom" action="#" method="post" runat="server">
-				<asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+			<form role="form" id="newRoom" action="#" method="post" runat="server" >
+				<asp:ScriptManager id="ScriptManager2" runat="server" >
+                 </asp:ScriptManager>
+        
                     <asp:UpdatePanel ID ="UpdatePanel1" runat="server">
                         <ContentTemplate>
                              <div class="form-group">
 					            <label class="required" for="guest_house">Guest House</label>
-                                <asp:DropDownList ID="DropDownListGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID"></asp:DropDownList>
+                                <asp:DropDownList ID="DropDownListGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="120px" Height="25px"></asp:DropDownList>
 				        	<!--<input type="text" class="form-control" name="room_type" id="room_type" placeholder="Room Type" required> -->
 				            </div>
                             <div class="form-group">
 				        	<label class="required" for="room_type">Room Type</label>
-                            <asp:DropDownList ID="DropDownListRoom" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownListRoom" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="120px" Height="25px"></asp:DropDownList>
 					        <!--<input type="text" class="form-control" name="room_type" id="room_type" placeholder="Room Type" required> -->
 				            </div>
                             <div class="form-group">
 				    	    <label class="required" for="booking_status">Booking Status</label>
-                            <asp:DropDownList ID="DropDownListBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownListBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID" Width="120px" Height="25px"></asp:DropDownList>
 					        <!--<input type="text" class="form-control" name="booking_status" id="booking_status" placeholder="Booking Status" required> -->
 				            </div>
                         </ContentTemplate>
