@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - SB Admin v6.0.1 (https://startbootstrap.com/templates/sb-admin)
 * Copyright 2013-2020 Start Bootstrap
@@ -10275,6 +10275,6 @@ td,th {
 }
 
 .button_glyph:hover {
-    background-color: #007bff; /* Green */
+    background-color: #007bff; 
     color: white;
 }
