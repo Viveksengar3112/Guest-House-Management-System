@@ -3,3 +3,13 @@ D:\Developer\GuestHouseManagementSystem\GuestHouseDB\bin\Debug\GuestHouseDB.dll
 D:\Developer\GuestHouseManagementSystem\GuestHouseDB\bin\Debug\GuestHouseDB.pdb
 D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\GuestHouseDB.dll
 D:\Developer\GuestHouseManagementSystem\GuestHouseDB\obj\Debug\GuestHouseDB.pdb
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\bin\Debug\GuestHouseDB.dacpac
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\bin\Debug\GuestHouseDB.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\bin\Debug\GuestHouseDB.pdb
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\GuestHouseDB.sqlprojAssemblyReference.cache
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\Model.xml
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\refactor.xml
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\postdeploy.sql
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\predeploy.sql
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\GuestHouseDB.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouseDB\obj\Debug\GuestHouseDB.pdb

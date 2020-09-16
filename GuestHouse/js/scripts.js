@@ -45,7 +45,7 @@ $('.delete').click(function () {
 */
 
 
-
+/*
 var password = document.getElementById("inputPassword");
 var confirm_password = document.getElementById("inputConfirmPassword");
 
@@ -59,3 +59,4 @@ function validatePassword() {
 
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
+*/

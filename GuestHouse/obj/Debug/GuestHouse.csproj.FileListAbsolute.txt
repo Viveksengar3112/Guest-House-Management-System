@@ -12,3 +12,17 @@ D:\Developer\GuestHouseManagementSystem\GuestHouse\obj\Debug\GuestHouse.csprojAs
 D:\Developer\GuestHouseManagementSystem\GuestHouse\obj\Debug\GuestHouse.csproj.CoreCompileInputs.cache
 D:\Developer\GuestHouseManagementSystem\GuestHouse\obj\Debug\GuestHouse.dll
 D:\Developer\GuestHouseManagementSystem\GuestHouse\obj\Debug\GuestHouse.pdb
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\obj\Debug\GuestHouse.csprojAssemblyReference.cache
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\obj\Debug\GuestHouse.csproj.CoreCompileInputs.cache
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\obj\Debug\GuestHouse.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\obj\Debug\GuestHouse.pdb
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\GuestHouse.dll.config
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\GuestHouse.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\GuestHouse.pdb
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\EntityFramework.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\EntityFramework.SqlServer.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\EntityFramework.xml
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\EntityFramework.SqlServer.xml
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\obj\Debug\GuestHouse.csproj.CopyComplete
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\Newtonsoft.Json.dll
+D:\PS2\GMS\Guest-House-Management-System\GuestHouse\bin\Newtonsoft.Json.xml
