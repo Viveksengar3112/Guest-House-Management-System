@@ -10,41 +10,30 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
-using System.Web.UI.WebControls;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Web;
 using System.Web.Services.Protocols;
+using System.ComponentModel;
+using System.Data.Entity.Core.Metadata.Edm;
 
 namespace GuestHouse.Views
 {
     public partial class RoomDetails : System.Web.UI.Page
     {
+      
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DropDownListRoom.DataSource = getData("spGetRoomType", null);
-                DropDownListRoom.DataBind();
-                ListItem LIRoomType = new ListItem("---Select---", "-1");
-                DropDownListRoom.Items.Insert(0, LIRoomType);
-
-                DropDownListBS.DataSource = getData("spGetBookingStatus", null);
-                DropDownListBS.DataBind();
-                ListItem LIBookingStatus = new ListItem("---Select---", "-1");
-                DropDownListBS.Items.Insert(0, LIBookingStatus);
-
-                DropDownListGH.DataSource = getData("spGetGuestHouse", null);
-                DropDownListGH.DataBind();
-                ListItem LIGuestHouse = new ListItem("---Select---", "-1");
-                DropDownListGH.Items.Insert(0, LIGuestHouse);
+               
 
                 this.BindRepeater();
+
+            
+
             }
+            
         }
-
-
-
 
 
         private DataSet getData(string Proc, SqlParameter Parameter)
@@ -64,46 +53,7 @@ namespace GuestHouse.Views
                 return DS;
             }
         }
-        [System.Web.Services.WebMethod]
-        public static object SaveRoomDetails(object roomData)
-        {
-            System.Diagnostics.Debug.WriteLine("Hello!");
-            object o = string.Empty;
-            RoomModel r = new JavaScriptSerializer().ConvertToType<RoomModel>(roomData);
-
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
-            {
-                try
-                {
-                    SqlCommand sc = new SqlCommand("dbo.spRoomDetailsCRUD", con);
-                    sc.CommandType = CommandType.StoredProcedure;
-                    // string ImageUniqueName = Guid.NewGuid().ToString();
-                    // string ActualImageName = ImageUniqueName + Path.GetExtension(r.InputImage.FileName);
-                    //  r.InputImage.SaveAs(HttpContext.Current.Server.MapPath("~/RoomImages/" + ActualImageName));
-                    sc.Parameters.AddWithValue("@Action", "INSERT");
-                    sc.Parameters.AddWithValue("@RoomNumber", r.RoomNumber.Trim());
-                    sc.Parameters.AddWithValue("@RoomPrice", r.RoomPrice.Trim());
-                    sc.Parameters.AddWithValue("@BookingStatusID", r.BookingStatusID);
-                    sc.Parameters.AddWithValue("@RoomTypeID", r.RoomTypeID);
-                    sc.Parameters.AddWithValue("@RoomCapacity", r.RoomCapacity);
-                    sc.Parameters.AddWithValue("@RoomDescription", r.RoomDescription.Trim());
-                    sc.Parameters.AddWithValue("@GuestHouseID", r.GuestHouseID);
-                    // sc.Parameters.AddWithValue("@RoomImage", ActualImageName.Trim());
-                    con.Open();
-                    sc.ExecuteNonQuery(); System.Diagnostics.Debug.WriteLine("Hello2!");
-                    con.Close();
-                }
-
-
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-
-            return o;
-        }
+        
 
         [System.Web.Services.WebMethod]
         public static RoomViewModel GetRoomDetails()
@@ -132,7 +82,32 @@ namespace GuestHouse.Views
             return room;
         }
 
-        private void BindRepeater()
+        protected void RepeaterItemBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                DropDownList ddlGH=(e.Item.FindControl("ddlGH") as DropDownList);
+                ddlGH.DataSource = getData("spGetGuestHouse",null);
+                ddlGH.DataBind();
+                ListItem LIGuestHouse = new ListItem("---Select---", "-1");
+                ddlGH.Items.Insert(0, LIGuestHouse);
+
+                DropDownList ddlBS = (e.Item.FindControl("ddlBS") as DropDownList);
+                ddlBS.DataSource = getData("spGetBookingStatus", null);
+                ddlBS.DataBind();
+                ListItem LIBookingStatus = new ListItem("---Select---", "-1");
+                ddlBS.Items.Insert(0, LIBookingStatus);
+
+
+                DropDownList ddlRT = (e.Item.FindControl("ddlRT") as DropDownList);
+                ddlRT.DataSource = getData("spGetRoomType", null);
+                ddlRT.DataBind();
+                ListItem LIRoomType = new ListItem("---Select---", "-1");
+                ddlRT.Items.Insert(0, LIRoomType);
+
+            }    
+        }
+            private void BindRepeater()
         {
             string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
@@ -148,6 +123,92 @@ namespace GuestHouse.Views
                 }
 
             }
+        }
+
+        protected void OnEdit(object sender, EventArgs e)
+        {
+            //Find the reference of the Repeater Item.
+            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            this.ToggleElements(item, true);
+        }
+
+        private void ToggleElements(RepeaterItem item, bool isEdit)
+        {
+            //Toggle Buttons.
+            item.FindControl("btnEdit").Visible = !isEdit;
+            item.FindControl("btnUpdate").Visible = isEdit;
+            item.FindControl("btnCancel").Visible = isEdit;
+            item.FindControl("btnDelete").Visible = !isEdit;
+
+            //Toggle Labels.
+            item.FindControl("lblGH").Visible = !isEdit;
+           
+            item.FindControl("lblRN").Visible = !isEdit;
+            item.FindControl("lblRP").Visible = !isEdit;
+            item.FindControl("lblRC").Visible = !isEdit;
+            item.FindControl("lblBS").Visible = !isEdit;
+            item.FindControl("lblRT").Visible = !isEdit;
+            item.FindControl("lblRD").Visible = !isEdit;
+
+            //Toggle TextBoxes.
+            item.FindControl("ddlGH").Visible = isEdit;
+            //item.FindControl("txtGH").Visible = isEdit;
+            item.FindControl("txtRN").Visible = isEdit;
+            item.FindControl("txtRP").Visible = isEdit;
+            item.FindControl("txtRC").Visible = isEdit;
+            item.FindControl("ddlBS").Visible = isEdit;
+            item.FindControl("ddlRT").Visible = isEdit;
+            item.FindControl("txtRD").Visible = isEdit;
+
+        }
+
+        protected void OnUpdate(object sender, EventArgs e)
+        {
+            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            int RoomID = int.Parse((item.FindControl("lblRoomID") as Label).Text);
+            string RoomNumber = (item.FindControl("txtRN") as TextBox).Text.Trim();
+            string RoomPrice = (item.FindControl("txtRP") as TextBox).Text.Trim();
+            string RoomCapacity = (item.FindControl("txtRC") as TextBox).Text.Trim();
+            string RoomDescription= (item.FindControl("txtRD") as TextBox).Text.Trim();
+            int GuestHouseID = int.Parse((item.FindControl("ddlGH") as DropDownList).SelectedValue);
+            int RoomTypeID = int.Parse((item.FindControl("ddlRT") as DropDownList).SelectedValue);
+            int BookingStatusID = int.Parse((item.FindControl("ddlBS") as DropDownList).SelectedValue);
+
+            string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("spRoomDetailsCRUD"))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Action", "UPDATE");
+                    cmd.Parameters.AddWithValue("@RoomID", RoomID);
+                    cmd.Parameters.AddWithValue("@RoomNumber", RoomNumber);
+                    cmd.Parameters.AddWithValue("@RoomPrice", RoomPrice);
+                    cmd.Parameters.AddWithValue("@RoomCapacity", RoomCapacity);
+                    cmd.Parameters.AddWithValue("@RoomDescription", RoomDescription);
+                    cmd.Parameters.AddWithValue("@GuestHouseID", GuestHouseID);
+                    cmd.Parameters.AddWithValue("@BookingStatusID", BookingStatusID);
+                    cmd.Parameters.AddWithValue("@RoomTypeID", RoomTypeID);
+
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            this.BindRepeater();
+
+
+        }
+
+
+
+
+            protected void OnCancel(object sender, EventArgs e)
+        {
+            //Find the reference of the Repeater Item.
+            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            this.ToggleElements(item, false);
         }
         protected void OnDelete(object sender, EventArgs e)
         {
@@ -172,7 +233,7 @@ namespace GuestHouse.Views
             this.BindRepeater();
         }
 
-
+       
     }
     
 }
