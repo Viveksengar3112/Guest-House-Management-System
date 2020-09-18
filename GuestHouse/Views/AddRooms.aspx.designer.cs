@@ -11,17 +11,17 @@ namespace GuestHouse.Views
 {
 
 
-    public partial class RoomDetails
+    public partial class AddRooms
     {
 
         /// <summary>
-        /// formTable control.
+        /// newRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formTable;
+        protected global::System.Web.UI.HtmlControls.HtmlForm newRoom;
 
         /// <summary>
         /// ScriptManager2 control.
@@ -33,22 +33,40 @@ namespace GuestHouse.Views
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
-        /// UpdatePanel3 control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// RoomTable control.
+        /// DropDownListGH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RoomTable;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListGH;
+
+        /// <summary>
+        /// DropDownListRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListRoom;
+
+        /// <summary>
+        /// DropDownListBS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListBS;
 
         /// <summary>
         /// addroom control.
