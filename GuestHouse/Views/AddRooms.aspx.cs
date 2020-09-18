@@ -1,6 +1,7 @@
 ﻿using GuestHouse.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -61,6 +62,21 @@ namespace GuestHouse.Views
             object o = string.Empty;
             RoomModel r = new JavaScriptSerializer().ConvertToType<RoomModel>(roomData);
 
+            var context = new ValidationContext(r, serviceProvider: null, items: null);
+            var results = new List<ValidationResult>();
+            var isValid = Validator.TryValidateObject(r, context, results, true);
+
+            if (!isValid)
+            {
+                
+                foreach (var validationResult in results)
+                {
+                    
+                   // throw new ArgumentException("Please fill all the mandatory fields.");
+                   HttpContext.Current.Response.Write(validationResult.ErrorMessage.ToString());
+                }
+                return o;
+            }
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString))
             {

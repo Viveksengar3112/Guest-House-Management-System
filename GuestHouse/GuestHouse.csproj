@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="Views\AddRooms.aspx" />
     <Content Include="Views\admin.Master" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
