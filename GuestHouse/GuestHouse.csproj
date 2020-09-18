@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\AddRooms.aspx" />
     <Content Include="Views\admin.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -95,8 +96,16 @@
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\RoomViewModel.cs" />
+    <Compile Include="Views\AddRooms.aspx.cs">
+      <DependentUpon>AddRooms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AddRooms.aspx.designer.cs">
+      <DependentUpon>AddRooms.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
@@ -119,9 +128,6 @@
       <DependentUpon>RoomDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\RoomDetails.aspx.designer.cs">
-      <DependentUpon>RoomDetails.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Guest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\login.aspx.cs">
@@ -137,6 +143,9 @@
     </Compile>
     <Compile Include="Views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoomDetails.aspx.designer.cs">
+      <DependentUpon>RoomDetails.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
