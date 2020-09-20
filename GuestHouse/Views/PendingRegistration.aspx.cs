@@ -53,5 +53,78 @@ namespace GuestHouse.Views
             return json;
         }
 
+        [System.Web.Services.WebMethod]
+        public static void RejectRequests(string[] values)
+        {       
+            try
+            {
+                System.Diagnostics.Debug.WriteLine(values);
+                
+                string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                foreach (string email in values) {
+                    using (con)
+                    {
+                        SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+
+                        sc.Parameters.AddWithValue("@Action", "DELETE");
+                        sc.Parameters.AddWithValue("@Email", email);
+                        con.Open();
+                        sc.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Web.Services.WebService wsError = new System.Web.Services.WebService();
+                wsError.Context.Response.StatusCode = 500;
+
+                wsError.Context.Response.AppendHeader("error", ex.Message);
+
+            }
+
+        }
+
+        [System.Web.Services.WebMethod]
+        public static void AcceptRequests(string[] values)
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine(values);
+
+                string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+                SqlConnection con = new SqlConnection(constr);
+                foreach (string email in values)
+                {
+                    using (con)
+                    {
+                        SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+
+                        sc.Parameters.AddWithValue("@Action", "ACCEPT");
+                        sc.Parameters.AddWithValue("@Email", email);
+                        con.Open();
+                        sc.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Web.Services.WebService wsError = new System.Web.Services.WebService();
+                wsError.Context.Response.StatusCode = 500;
+
+                wsError.Context.Response.AppendHeader("error", ex.Message);
+
+            }
+
+        }
+
     }
 }

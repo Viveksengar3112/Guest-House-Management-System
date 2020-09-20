@@ -10279,3 +10279,8 @@ td,th {
     background-color: #007bff; 
     color: white;
 }
+
+.required:after {
+    content: " *";
+    color: red;
+}
