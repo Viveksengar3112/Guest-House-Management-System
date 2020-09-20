@@ -44,9 +44,10 @@
                 var guest = {};
                 guest.FirstName = $('#inputFirstName').val();
                 guest.LastName = $('#inputLastName').val();
-                guest.EmailAddress = $('#inputEmailAddress').val();
+                guest.Email = $('#inputEmailAddress').val();
                 guest.MobileNo = $('#inputMobileNumber').val();
-                guest.ID = $('#inputPersonID').val(); 
+                guest.ID = $('#inputPersonID').val();
+                guest.Password = $('#inputPassword').val();
                 $.ajax({
                     url: 'Register.aspx/SaveUserDetails',
                     type: "POST",
@@ -109,7 +110,7 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="inputFirstName">First Name</label>
+                                                    <label class="small mb-1 required" for="inputFirstName">First Name</label>
                                                     <input class="form-control py-4" id="inputFirstName" type="text" autocapitalize="word" placeholder="Enter first name" required="required" />
                                                 </div>
                                             </div>
@@ -123,31 +124,31 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="inputMobileNumber">Mobile No.</label>
+                                                    <label class="small mb-1 required" for="inputMobileNumber">Mobile No.</label>
                                                     <input class="form-control py-4" id="inputMobileNumber" type="tel" placeholder="Enter mobile number" required="required" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="inputPersonID">ID</label>
+                                                    <label class="small mb-1 required" for="inputPersonID">ID</label>
                                                     <input class="form-control py-4" id="inputPersonID" type="text" placeholder="Enter ID" required="required" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                            <label class="small mb-1 required" for="inputEmailAddress">Email</label>
                                             <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required="required" />
                                         </div>
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="inputPassword">Password</label>
+                                                    <label class="small mb-1 required" for="inputPassword">Password</label>
                                                     <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" required="required" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
+                                                    <label class="small mb-1 required" for="inputConfirmPassword">Confirm Password</label>
                                                     <input class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirm password" required="required" />
                                                 </div>
                                             </div>

@@ -22,7 +22,7 @@ BEGIN
    (
 		FirstName,
 		LastName,
-		EmailAddress,
+		Email,
 		MobileNo,
 		ID
    )
