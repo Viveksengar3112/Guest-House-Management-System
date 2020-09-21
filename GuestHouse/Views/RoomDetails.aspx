@@ -8,8 +8,6 @@
    <main>
 
 	<div class="container-fluid">
-        <a class="hiddenanchor" id="toTable"></a>
-         <a class="hiddenanchor" id="toAddRoom"></a>
         <div class="mb-4" id="roomDetail">
             
 			<h2 class="mt-4">Room Details</h2>

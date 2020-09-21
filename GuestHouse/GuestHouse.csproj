@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\AddBookings.aspx" />
     <Content Include="Views\AddRooms.aspx" />
     <Content Include="js\dist\jquery.simple-checkbox-table.js" />
     <Content Include="js\dist\jquery.simple-checkbox-table.min.js" />
@@ -86,6 +87,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\dashboard.css" />
     <Content Include="css\styles.css" />
+    <Content Include="Views\Bookings.aspx" />
     <Content Include="Views\Dashboard.aspx" />
     <Content Include="Views\PendingRegistration.aspx" />
     <Content Include="Views\RoomDetails.aspx" />
@@ -96,9 +98,17 @@
     <Content Include="Views\login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Bookings.cs" />
     <Compile Include="Models\RoomModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\RoomViewModel.cs" />
+    <Compile Include="Views\AddBookings.aspx.cs">
+      <DependentUpon>AddBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AddBookings.aspx.designer.cs">
+      <DependentUpon>AddBookings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddRooms.aspx.cs">
       <DependentUpon>AddRooms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,6 +122,13 @@
     </Compile>
     <Compile Include="Views\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bookings.aspx.cs">
+      <DependentUpon>Bookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bookings.aspx.designer.cs">
+      <DependentUpon>Bookings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
