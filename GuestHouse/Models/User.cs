@@ -26,7 +26,7 @@ namespace GuestHouse.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
         [Required(ErrorMessage = "This is a required field.")]
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

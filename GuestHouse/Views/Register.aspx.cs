@@ -38,9 +38,10 @@ namespace GuestHouse.Views
                         
                         sc.Parameters.AddWithValue("@FirstName", user.FirstName.Trim());
                         sc.Parameters.AddWithValue("@LastName", user.LastName.Trim());
-                        sc.Parameters.AddWithValue("@EmailAddress", user.EmailAddress.Trim());
+                        sc.Parameters.AddWithValue("@Email", user.Email.Trim());
                         sc.Parameters.AddWithValue("@MobileNo", user.MobileNo.Trim());
                         sc.Parameters.AddWithValue("@ID", user.ID.Trim());
+                        sc.Parameters.AddWithValue("@Password", user.Password.Trim());
                         con.Open();
                         sc.ExecuteNonQuery(); System.Diagnostics.Debug.WriteLine("Hello2!");
                         con.Close();
