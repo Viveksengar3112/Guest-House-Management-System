@@ -64,9 +64,9 @@
                       <button ID="btnCancel" runat="server" class="button_glyph" visible="false" onserverclick="OnCancel">
                         <span aria-hidden="true" class="fa fa-times"></span>
                      </button>&nbsp;&nbsp;
-                     <button ID="btnDelete" runat="server" class="button_glyph" onserverclick="OnDelete" OnClientClick="confirm('Do you want to delete this row?');" >
+                     <asp:Linkbutton ID="btnDelete" runat="server" class="button_glyph" onClick="OnDelete" OnClientClick="return GetConfirmation();" >
                         <span aria-hidden="true" class="fa fa-trash"></span>
-                     </button>
+                     </asp:Linkbutton>
                  
                  <td>
                 <asp:Label ID="lblRoomID" runat="server" Text='<%# Eval("RoomID") %>' Visible = "false" />
@@ -124,8 +124,21 @@
 		 
             
         </div> 
-       
-
+       </div>
+  <script type="text/javascript">
+  function GetConfirmation()
+  {
+      var reply = confirm("Are you sure you want to delete this room?");
+      if(reply)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+  }
+  </script>
        
 	</main>
 </asp:Content>

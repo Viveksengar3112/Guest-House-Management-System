@@ -213,7 +213,7 @@ namespace GuestHouse.Views
         protected void OnDelete(object sender, EventArgs e)
         {
             //Find the reference of the Repeater Item.
-            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
             int RoomID = int.Parse((item.FindControl("lblRoomID") as Label).Text);
 
             string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
