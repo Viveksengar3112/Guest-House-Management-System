@@ -7,9 +7,10 @@
 	(	
 		@FirstName nvarchar(50),
 		@LastName nvarchar(50),
-		@EmailAddress varchar(50),
+		@Email varchar(50),
 		@MobileNo nvarchar(50),
-		@ID nvarchar(50)
+		@ID nvarchar(50),
+		@Password nvarchar(50)
 	)
 	
 AS
@@ -24,14 +25,15 @@ BEGIN
 		LastName,
 		Email,
 		MobileNo,
-		ID
+		ID,
+		Password
    )
    VALUES(
 	@FirstName,
 	@LastName,
-	@EmailAddress,
+	@Email,
 	@MobileNo,
-	@ID
-   
+	@ID,
+	@Password
    )
 END
