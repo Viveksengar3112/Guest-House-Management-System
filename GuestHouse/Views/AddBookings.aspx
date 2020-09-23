@@ -3,35 +3,53 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript">
         $(function () {
 
-            $("#<%= booking_from.ClientID %>").datepicker({
-                dateFormat: 'dd-M-yy',
-                changeMonth: true,
-                changeYear: true,
-                showOn: 'button',
-                sideBySide: true,
-                controlType: 'select',
-                buttonText: '<span class="fa fa-calendar"></span>',
-                minDate: new Date(),
-                onClose: function (selectedDate) {
-                    $("#<%= booking_to.ClientID %>").datepicker("option", "minDate", selectedDate);
-                }
+            $("#<%= booking_from.ClientID %>").flatpickr({
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                altInput: true,
+                altFormat: "F j, Y H:i",
             });
-            $("#<%= booking_to.ClientID %>").datepicker({
-                dateFormat: 'dd-M-yy',
-                changeMonth: true,
-                changeYear: true,
-                showOn: 'button',
-                sideBySide: true,
-                controlType: 'select',
-                buttonText: '<span class="fa fa-calendar"></span>',
-                onClose: function (selectedDate) {
-                    $("#<%= booking_from.ClientID %>").datepicker("option", "maxDate", selectedDate);
-                }
+            $("#<%= booking_to.ClientID %>").flatpickr({
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                altInput: true,
+                altFormat: "F j, Y H:i",
             });
         });
+        function pageLoad(sender, args) {
+            $(".ddl").select2({
+                allowClear: true,
+                placeholder: { id: "0", text: "Please select..." }
+
+            });
+        }
+       
+        function showHideBT(dd) {
+            var indexVal = dd.selectedIndex;
+            var trainingName = document.getElementById('<%= training_name.ClientID %>');
+            var trainingDirector = document.getElementById('<%= training_director.ClientID %>');
+            var lblName = document.getElementById('<%= lblTN.ClientID %>');
+            var lblDir = document.getElementById('<%= lblTD.ClientID %>');
+            if (dd.options[indexVal].value == "1")  //If training
+            {
+                trainingName.style.display = 'block';    // this will display the textbox
+                trainingDirector.style.display = 'block';
+                lblName.style.display = 'inherit';
+                lblDir.style.display = 'inherit';
+            }
+            else
+            {
+                trainingName.style.display = 'none';  // this will hide the textbox
+                trainingDirector.style.display = 'none';
+               lblName.style.display = 'none';
+                lblDir.style.display = 'none';
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainBody" runat="server">
@@ -43,16 +61,52 @@
                 <br />
                 <asp:ScriptManager ID="ScriptManager1" runat="server">
                 </asp:ScriptManager>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <asp:UpdatePanel ID="UpdatePanelBT" runat="server">
                     <ContentTemplate>
                         <div class="form-row ml-2 mb-1 mt-3">
+                            <div class="col-md-3">
+                                <label class="required" for="ddlBT">Booking Type: </label>
+                                <asp:DropDownList ID="ddlBT" runat="server" AutoPostBack="True" DataTextField="BookingType" DataValueField="BookingTypeID" CssClass="form-control ddl" Width="150px"  onchange="javascript:return showHideBT(this);"></asp:DropDownList>
+
+                            </div>
+
+                        </div>
+                        </ContentTemplate>
+                </asp:UpdatePanel>
+                        <div class="form-row ml-2 mb-1 mt-3">
                             <div class="col-md-4">
-                                <label class="required" for="ddlRoom">Room Number</label>
-                                <asp:DropDownList ID="ddlRoom" runat="server" AutoPostBack="True" DataTextField="RoomNumber" DataValueField="RoomNumber" Width="120px" Height="25px"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="valRoom" runat="server" InitialValue="-1" ErrorMessage="Invalid Selection" ForeColor="Red" ControlToValidate="ddlRoom"></asp:RequiredFieldValidator>
+                                <asp:Label runat="server" AssociatedControlID="training_name" style="display: none;" Id="lblTN">Training Name</asp:Label>
+                                <asp:TextBox Type="text" ClientIDMode="Static" CssClass="form-control" ID="training_name" runat="server" Style="display: none;" placeholder="Enter Training Name"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="valT" runat="server" ErrorMessage="This is a  required field." ForeColor="Red" ControlToValidate="training_name"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-4">
+                                <asp:Label runat="server" AssociatedControlID="training_director" style="display: none;" Id="lblTD">Training Director</asp:Label>
+                                <asp:TextBox Type="text" ClientIDMode="Static" CssClass="form-control" ID="training_director" runat="server" Style="display: none;" placeholder="Enter Director of Training"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="valTd" runat="server" ErrorMessage="This is a  required field." ForeColor="Red" ControlToValidate="training_director"></asp:RequiredFieldValidator>
                             </div>
                         </div>
-                    </ContentTemplate>
+                         
+                <asp:UpdatePanel ID="UpdatePanelRoom" runat="server">
+                    <ContentTemplate>
+                        <div class="form-row ml-2 mb-1 mt-6">
+                            <div class="col-md-2">
+                                <label class="required" for="ddlGH">Guest House </label>
+                                <asp:DropDownList ID="ddlGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="150px"  CssClass="form-control ddl" AppendDataBoundItems="true"  onselectedindexchanged="ddlGH_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="valGH" runat="server" InitialValue="0" ErrorMessage="Invalid Selection" ForeColor="Red" ControlToValidate="ddlGH"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="required" for="ddlRT">Room Type </label>
+                                <asp:DropDownList ID="ddlRT" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="150px"  CssClass="form-control ddl" AppendDataBoundItems="true" onselectedindexchanged="ddlRT_SelectedIndexChanged" ></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="valRT" runat="server" InitialValue="0" ErrorMessage="Invalid Selection" ForeColor="Red" ControlToValidate="ddlRT"></asp:RequiredFieldValidator>
+                            </div>
+                        
+                        <div class="col-md-4">
+                                <label class="required" for="ddlAR">Available Rooms </label>
+                                <asp:DropDownList ID="ddlAR" runat="server" AutoPostBack="True" DataTextField="RoomNumber" DataValueField="RoomNumber" Width="150px"  CssClass="form-control ddl" AppendDataBoundItems="true" ></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="valAR" runat="server" InitialValue="0" ErrorMessage="Invalid Selection" ForeColor="Red" ControlToValidate="ddlAR"></asp:RequiredFieldValidator>
+                            </div>
+                            </div>
+                   </ContentTemplate>
                 </asp:UpdatePanel>
                 <div class="form-row ml-2 mb-1">
 
