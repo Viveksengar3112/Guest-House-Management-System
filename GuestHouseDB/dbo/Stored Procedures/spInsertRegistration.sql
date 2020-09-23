@@ -35,6 +35,5 @@ BEGIN
 	@MobileNo,
 	@ID,
 	@Password
-   
    )
 END
