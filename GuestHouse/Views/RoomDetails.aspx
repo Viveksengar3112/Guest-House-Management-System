@@ -8,8 +8,6 @@
    <main>
 
 	<div class="container-fluid">
-        <a class="hiddenanchor" id="toTable"></a>
-         <a class="hiddenanchor" id="toAddRoom"></a>
         <div class="mb-4" id="roomDetail">
             
 			<h2 class="mt-4">Room Details</h2>
@@ -64,15 +62,15 @@
                       <button ID="btnCancel" runat="server" class="button_glyph" visible="false" onserverclick="OnCancel">
                         <span aria-hidden="true" class="fa fa-times"></span>
                      </button>&nbsp;&nbsp;
-                     <button ID="btnDelete" runat="server" class="button_glyph" onserverclick="OnDelete" OnClientClick="confirm('Do you want to delete this row?');" >
+                     <asp:Linkbutton ID="btnDelete" runat="server" class="button_glyph" onClick="OnDelete" OnClientClick="return GetConfirmation();" >
                         <span aria-hidden="true" class="fa fa-trash"></span>
-                     </button>
+                     </asp:Linkbutton>
                  
                  <td>
                 <asp:Label ID="lblRoomID" runat="server" Text='<%# Eval("RoomID") %>' Visible = "false" />
                
                      <asp:Label ID="lblGH" runat="server" Text='<%# Eval("Name") %>' />
-                    <asp:DropDownList ID="ddlGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                    <asp:DropDownList ID="ddlGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
                  </td>
                  
             <td>
@@ -90,22 +88,20 @@
                  
                   <td>
                 <asp:Label ID="lblBS" runat="server" Text='<%# Eval("BookingStatus") %>' />
-                <asp:DropDownList ID="ddlBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
 
                 </td>
                   
                   <td>
                 <asp:Label ID="lblRT" runat="server" Text='<%# Eval("RoomType") %>' />
-                <asp:DropDownList ID="ddlRT" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlRT" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
                 </td>
                  
                   <td>
                 <asp:Label ID="lblRD" runat="server" Text='<%# Eval("RoomDescription") %>' />
                 <asp:Textbox ID="txtRD" runat="server" Text='<%# Eval("RoomDescription") %>' Visible = "false" Width="100px" />
                 </td>
-                 <asp:RequiredFieldValidator InitialValue="0" ID="Req_ID" Display="Dynamic" 
-                         ValidationGroup="g1" runat="server" ControlToValidate="ddlRT"
-                            Text="*" ErrorMessage="ErrorMessage"></asp:RequiredFieldValidator>
+                 
 
         </tr>
     </ItemTemplate>
@@ -124,8 +120,21 @@
 		 
             
         </div> 
-       
-
+       </div>
+  <script type="text/javascript">
+  function GetConfirmation()
+  {
+      var reply = confirm("Are you sure you want to delete this room?");
+      if(reply)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+  }
+  </script>
        
 	</main>
 </asp:Content>

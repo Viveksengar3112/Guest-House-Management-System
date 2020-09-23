@@ -91,20 +91,26 @@ namespace GuestHouse.Views
                 ddlGH.DataBind();
                 ListItem LIGuestHouse = new ListItem("---Select---", "-1");
                 ddlGH.Items.Insert(0, LIGuestHouse);
+                string selGH = (e.Item.DataItem as DataRowView)["Name"].ToString();
+                ddlGH.Items.FindByText(selGH).Selected = true;
+
 
                 DropDownList ddlBS = (e.Item.FindControl("ddlBS") as DropDownList);
                 ddlBS.DataSource = getData("spGetBookingStatus", null);
                 ddlBS.DataBind();
                 ListItem LIBookingStatus = new ListItem("---Select---", "-1");
                 ddlBS.Items.Insert(0, LIBookingStatus);
-
+                string selBS= (e.Item.DataItem as DataRowView)["BookingStatus"].ToString();
+                ddlBS.Items.FindByText(selBS).Selected = true;
+               
 
                 DropDownList ddlRT = (e.Item.FindControl("ddlRT") as DropDownList);
                 ddlRT.DataSource = getData("spGetRoomType", null);
                 ddlRT.DataBind();
                 ListItem LIRoomType = new ListItem("---Select---", "-1");
                 ddlRT.Items.Insert(0, LIRoomType);
-
+                string selRT = (e.Item.DataItem as DataRowView)["RoomType"].ToString();
+                ddlRT.Items.FindByText(selRT).Selected = true;
             }    
         }
             private void BindRepeater()
@@ -213,7 +219,7 @@ namespace GuestHouse.Views
         protected void OnDelete(object sender, EventArgs e)
         {
             //Find the reference of the Repeater Item.
-            RepeaterItem item = (sender as HtmlButton).Parent as RepeaterItem;
+            RepeaterItem item = (sender as LinkButton).Parent as RepeaterItem;
             int RoomID = int.Parse((item.FindControl("lblRoomID") as Label).Text);
 
             string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;

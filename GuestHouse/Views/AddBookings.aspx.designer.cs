@@ -11,7 +11,7 @@ namespace GuestHouse.Views
 {
 
 
-    public partial class AddRooms
+    public partial class AddBookings
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace GuestHouse.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm newRoom;
 
         /// <summary>
-        /// ScriptManager2 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager2;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
         /// UpdatePanel1 control.
@@ -42,121 +42,157 @@ namespace GuestHouse.Views
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// DropDownListGH control.
+        /// ddlRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListGH;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoom;
 
         /// <summary>
-        /// valGH control.
+        /// valRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valGH;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRoom;
 
         /// <summary>
-        /// DropDownListRoom control.
+        /// first_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListRoom;
+        protected global::System.Web.UI.WebControls.TextBox first_name;
 
         /// <summary>
-        /// valRT control.
+        /// valFN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRT;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valFN;
 
         /// <summary>
-        /// DropDownListBS control.
+        /// last_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListBS;
+        protected global::System.Web.UI.WebControls.TextBox last_name;
 
         /// <summary>
-        /// valBS control.
+        /// valLN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valBS;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valLN;
 
         /// <summary>
-        /// room_number control.
+        /// members control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox room_number;
+        protected global::System.Web.UI.WebControls.TextBox members;
 
         /// <summary>
-        /// valNumber control.
+        /// valMem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valNumber;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valMem;
 
         /// <summary>
-        /// occupancy control.
+        /// ph_number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox occupancy;
+        protected global::System.Web.UI.WebControls.TextBox ph_number;
 
         /// <summary>
-        /// valOcc control.
+        /// valPH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valOcc;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valPH;
 
         /// <summary>
-        /// rate control.
+        /// address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox rate;
+        protected global::System.Web.UI.WebControls.TextBox address;
 
         /// <summary>
-        /// valRate control.
+        /// valAD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valAD;
 
         /// <summary>
-        /// addroom control.
+        /// booking_from control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addroom;
+        protected global::System.Web.UI.WebControls.TextBox booking_from;
+
+        /// <summary>
+        /// valBF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valBF;
+
+        /// <summary>
+        /// booking_to control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox booking_to;
+
+        /// <summary>
+        /// valBT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valBT;
+
+        /// <summary>
+        /// Bookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Bookings;
 
         /// <summary>
         /// submitBtn control.
