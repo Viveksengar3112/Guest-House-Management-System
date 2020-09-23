@@ -70,7 +70,7 @@
                 <asp:Label ID="lblRoomID" runat="server" Text='<%# Eval("RoomID") %>' Visible = "false" />
                
                      <asp:Label ID="lblGH" runat="server" Text='<%# Eval("Name") %>' />
-                    <asp:DropDownList ID="ddlGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                    <asp:DropDownList ID="ddlGH" runat="server" AutoPostBack="True" DataTextField="Name" DataValueField="GuestHouseID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
                  </td>
                  
             <td>
@@ -88,22 +88,20 @@
                  
                   <td>
                 <asp:Label ID="lblBS" runat="server" Text='<%# Eval("BookingStatus") %>' />
-                <asp:DropDownList ID="ddlBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlBS" runat="server" AutoPostBack="True" DataTextField="BookingStatus" DataValueField="BookingStatusID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
 
                 </td>
                   
                   <td>
                 <asp:Label ID="lblRT" runat="server" Text='<%# Eval("RoomType") %>' />
-                <asp:DropDownList ID="ddlRT" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="120px" Height="25px" Visible="false" ValidationGroup="g1" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlRT" runat="server" AutoPostBack="True" DataTextField="RoomType" DataValueField="RoomTypeID" Width="120px" Height="25px" Visible="false"  ></asp:DropDownList>
                 </td>
                  
                   <td>
                 <asp:Label ID="lblRD" runat="server" Text='<%# Eval("RoomDescription") %>' />
                 <asp:Textbox ID="txtRD" runat="server" Text='<%# Eval("RoomDescription") %>' Visible = "false" Width="100px" />
                 </td>
-                 <asp:RequiredFieldValidator InitialValue="0" ID="Req_ID" Display="Dynamic" 
-                         ValidationGroup="g1" runat="server" ControlToValidate="ddlRT"
-                            Text="*" ErrorMessage="ErrorMessage"></asp:RequiredFieldValidator>
+                 
 
         </tr>
     </ItemTemplate>
