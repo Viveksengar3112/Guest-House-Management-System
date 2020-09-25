@@ -69,15 +69,6 @@ namespace GuestHouse.Views
         protected global::System.Web.UI.WebControls.TextBox training_name;
 
         /// <summary>
-        /// valT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valT;
-
-        /// <summary>
         /// lblTD control.
         /// </summary>
         /// <remarks>
@@ -94,15 +85,6 @@ namespace GuestHouse.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox training_director;
-
-        /// <summary>
-        /// valTd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valTd;
 
         /// <summary>
         /// UpdatePanelRoom control.

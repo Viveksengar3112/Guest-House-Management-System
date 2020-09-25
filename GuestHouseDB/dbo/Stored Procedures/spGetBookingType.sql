@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spGetBookingType]
 AS
 BEGIN
-	SELECT BookingType,BookingTypeID from Master.BookingType
+	SELECT BookingType,BookingTypeId from Master.BookingType
 END
 RETURN 0
