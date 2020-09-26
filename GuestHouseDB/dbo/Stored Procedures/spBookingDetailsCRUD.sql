@@ -41,6 +41,7 @@ BEGIN
 		)
 		UPDATE dbo.Rooms
 		SET BookingStatusID=2
+		WHERE RoomID=@AssignRoomID
 	END
 END
 
