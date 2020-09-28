@@ -92,6 +92,11 @@
     <Build Include="Master\Tables\Roles.sql" />
     <Build Include="dbo\Stored Procedures\spGetRoles.sql" />
     <Build Include="dbo\Stored Procedures\spEditManagement.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAvailableRooms.sql" />
+    <Build Include="Master\Tables\BookingType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetBookingType.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAvailableRoomTypes.sql" />
+    <Build Include="dbo\Stored Procedures\spBookingDetailsCRUD.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="GuestHouseDB.refactorlog" />

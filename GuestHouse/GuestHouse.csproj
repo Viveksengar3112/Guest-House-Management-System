@@ -98,6 +98,7 @@
     <Content Include="Views\Register.aspx" />
     <Content Include="register.html" />
     <Content Include="Views\CurrentManagement.aspx" />
+    <Content Include="Views\RoomPricing.aspx" />
     <Content Include="Web.config" />
     <Content Include="Views\login.aspx" />
   </ItemGroup>
@@ -184,6 +185,12 @@
     </Compile>
     <Compile Include="Views\CurrentManagement.aspx.designer.cs">
       <DependentUpon>CurrentManagement.aspx</DependentUpon>
+    <Compile Include="Views\RoomPricing.aspx.cs">
+      <DependentUpon>RoomPricing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RoomPricing.aspx.designer.cs">
+      <DependentUpon>RoomPricing.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
