@@ -12,25 +12,10 @@ using Newtonsoft.Json;
 
 namespace GuestHouse.Views
 {
-    public partial class PendingRegistration : System.Web.UI.Page
+    public partial class PendingRegistrationTrial : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            string DBCS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-
-            SqlConnection con = new SqlConnection(DBCS);
-            SqlDataAdapter da = new SqlDataAdapter("Select * from Registration", con);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-
-            string json = JsonConvert.SerializeObject(ds, Formatting.Indented);
-
-            System.Diagnostics.Debug.WriteLine(json);
-            System.Diagnostics.Debug.WriteLine("Page Load");
-            */
-
 
         }
 
@@ -54,28 +39,26 @@ namespace GuestHouse.Views
         }
 
         [System.Web.Services.WebMethod]
-        public static void RejectRequests(string[] values)
-        {       
+        public static void RejectRequests(string email)
+        {
             try
             {
-                System.Diagnostics.Debug.WriteLine(values);
-                
+                System.Diagnostics.Debug.WriteLine(email);
+
                 string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
                 SqlConnection con = new SqlConnection(constr);
-                foreach (string email in values) {
-                    using (con)
+                using (con)
+                {
+                    SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
                     {
-                        SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
-                        {
-                            CommandType = CommandType.StoredProcedure
-                        };
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                        sc.Parameters.AddWithValue("@Action", "DELETE");
-                        sc.Parameters.AddWithValue("@Email", email);
-                        con.Open();
-                        sc.ExecuteNonQuery();
-                        con.Close();
-                    }
+                    sc.Parameters.AddWithValue("@Action", "DELETE");
+                    sc.Parameters.AddWithValue("@Email", email);
+                    con.Open();
+                    sc.ExecuteNonQuery();
+                    con.Close();
                 }
             }
             catch (Exception ex)
@@ -90,29 +73,30 @@ namespace GuestHouse.Views
         }
 
         [System.Web.Services.WebMethod]
-        public static void AcceptRequests(string[] values)
+        public static void AcceptRequests(string email, string[] roles)
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine(values);
+                System.Diagnostics.Debug.WriteLine(email);
+                System.Diagnostics.Debug.WriteLine(roles);
 
                 string constr = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
                 SqlConnection con = new SqlConnection(constr);
-                foreach (string email in values)
+                using (con)
                 {
-                    using (con)
+                    SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
                     {
-                        SqlCommand sc = new SqlCommand("dbo.spPendingRegistration", con)
-                        {
-                            CommandType = CommandType.StoredProcedure
-                        };
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                        sc.Parameters.AddWithValue("@Action", "ACCEPT");
-                        sc.Parameters.AddWithValue("@Email", email);
-                        con.Open();
-                        sc.ExecuteNonQuery();
-                        con.Close();
-                    }
+                    sc.Parameters.AddWithValue("@Action", "ACCEPT");
+                    sc.Parameters.AddWithValue("@Email", email);
+                    SqlParameter roleparam = sc.Parameters.AddWithValue("@Role", roles[0]);
+                    roleparam.SqlDbType = SqlDbType.Structured;
+                    roleparam.TypeName = "dbo.Roles";
+                    con.Open();
+                    sc.ExecuteNonQuery();
+                    con.Close();
                 }
             }
             catch (Exception ex)
