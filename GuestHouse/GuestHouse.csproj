@@ -183,8 +183,9 @@
       <DependentUpon>CurrentManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\CurrentManagement.aspx.designer.cs">
-      <DependentUpon>CurrentManagement.aspx</DependentUpon>
+	  <Compile Include="Views\CurrentManagement.aspx.designer.cs">
+		  <DependentUpon>CurrentManagement.aspx</DependentUpon>
+	  </Compile>
     <Compile Include="Views\RoomPricing.aspx.cs">
       <DependentUpon>RoomPricing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
